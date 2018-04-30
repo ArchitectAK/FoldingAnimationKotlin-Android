@@ -506,12 +506,12 @@ open class FoldingKit : RelativeLayout {
      * @param attrs   attributes
      */
     private fun initializeFromAttributes(context: Context, attrs: AttributeSet) {
-        val array = context.theme.obtainStyledAttributes(attrs, R.styleable.FoldingCell, 0, 0)
+        val array = context.theme.obtainStyledAttributes(attrs, R.styleable.FoldingKit, 0, 0)
         try {
-            this.mAnimationDuration = array.getInt(R.styleable.FoldingCell_animationDuration, DEF_ANIMATION_DURATION)
-            this.mBackSideColor = array.getColor(R.styleable.FoldingCell_backSideColor, DEF_BACK_SIDE_COLOR)
-            this.mAdditionalFlipsCount = array.getInt(R.styleable.FoldingCell_additionalFlipsCount, DEF_ADDITIONAL_FLIPS)
-            this.mCameraHeight = array.getInt(R.styleable.FoldingCell_cameraHeight, DEF_CAMERA_HEIGHT)
+            this.mAnimationDuration = array.getInt(R.styleable.FoldingKit_animationDuration, DEF_ANIMATION_DURATION)
+            this.mBackSideColor = array.getColor(R.styleable.FoldingKit_backSideColor, DEF_BACK_SIDE_COLOR)
+            this.mAdditionalFlipsCount = array.getInt(R.styleable.FoldingKit_additionalFlipsCount, DEF_ADDITIONAL_FLIPS)
+            this.mCameraHeight = array.getInt(R.styleable.FoldingKit_cameraHeight, DEF_CAMERA_HEIGHT)
         } finally {
             array.recycle()
         }
