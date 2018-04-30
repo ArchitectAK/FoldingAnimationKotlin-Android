@@ -10,7 +10,7 @@ import android.widget.RelativeLayout
  * Created by ankit on 26/01/2018.
  */
 
-class FoldingCellView : RelativeLayout {
+class FoldingKitView : RelativeLayout {
 
     var backView: View? = null
         private set
@@ -51,7 +51,7 @@ class FoldingCellView : RelativeLayout {
         this.layoutParams = layoutParams
     }
 
-    fun withFrontView(frontView: View): FoldingCellView {
+    fun withFrontView(frontView: View): FoldingKitView {
         this.frontView = frontView
 
         if (this.frontView != null) {
@@ -63,7 +63,7 @@ class FoldingCellView : RelativeLayout {
         return this
     }
 
-    fun withBackView(backView: View): FoldingCellView {
+    fun withBackView(backView: View): FoldingKitView {
         this.backView = backView
 
         if (this.backView != null) {

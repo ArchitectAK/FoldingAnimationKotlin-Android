@@ -17,7 +17,7 @@ import com.cogitator.foldingit.animation.AnimationEndListener
 import com.cogitator.foldingit.animation.FoldAnimation
 import com.cogitator.foldingit.animation.HeightAnimation
 import com.freeankit.foldingit.R
-import com.freeankit.foldingit.views.FoldingCellView
+import com.freeankit.foldingit.views.FoldingKitView
 import java.util.*
 
 /**
@@ -218,11 +218,11 @@ open class FoldingKit : RelativeLayout {
      * @param contentViewBitmap bitmap from content view
      * @return list of FoldingCellViews with bitmap parts
      */
-    private fun prepareViewsForAnimation(viewHeights: List<Int>, titleViewBitmap: Bitmap, contentViewBitmap: Bitmap): List<FoldingCellView> {
+    private fun prepareViewsForAnimation(viewHeights: List<Int>, titleViewBitmap: Bitmap, contentViewBitmap: Bitmap): List<FoldingKitView> {
         if (viewHeights.isEmpty())
             throw IllegalStateException("ViewHeights array must be not null and not empty")
 
-        val partsList = ArrayList<FoldingCellView>()
+        val partsList = ArrayList<FoldingKitView>()
 
         val partWidth = titleViewBitmap.width
         var yOffset = 0
@@ -238,7 +238,7 @@ open class FoldingKit : RelativeLayout {
             if (i < viewHeights.size - 1) {
                 frontView = if (i == 0) createImageViewFromBitmap(titleViewBitmap) else createBackSideView(viewHeights[i + 1])
             }
-            frontView?.let { FoldingCellView(it, backView, context) }?.let { partsList.add(it) }
+            frontView?.let { FoldingKitView(it, backView, context) }?.let { partsList.add(it) }
             yOffset += partHeight
         }
 
@@ -350,7 +350,7 @@ open class FoldingKit : RelativeLayout {
     }
 
     /**
-     * Prepare and start height expand animation for FoldingCellLayout
+     * Prepare and start height expand animation for FoldingKitLayout
      *
      * @param partAnimationDuration one part animate duration
      * @param viewHeights           heights of animation parts
@@ -376,7 +376,7 @@ open class FoldingKit : RelativeLayout {
     }
 
     /**
-     * Prepare and start height collapse animation for FoldingCellLayout
+     * Prepare and start height collapse animation for FoldingKitLayout
      *
      * @param partAnimationDuration one part animate duration
      * @param viewHeights           heights of animation parts
@@ -421,21 +421,21 @@ open class FoldingKit : RelativeLayout {
     /**
      * Start fold animation
      *
-     * @param foldingCellElements           ordered list with animation parts from top to bottom
+     * @param FoldingKitElements           ordered list with animation parts from top to bottom
      * @param foldingLayout                 prepared layout for animation parts
      * @param part90degreeAnimationDuration animation duration for 90 degree rotation
      * @param animationEndListener          animation end callback
      */
-    private fun startFoldAnimation(foldingCellElements: List<FoldingCellView>, foldingLayout: ViewGroup,
+    private fun startFoldAnimation(FoldingKitElements: List<FoldingKitView>, foldingLayout: ViewGroup,
                                    part90degreeAnimationDuration: Int, animationEndListener: AnimationEndListener) {
-        for (foldingCellElement in foldingCellElements)
-            foldingLayout.addView(foldingCellElement)
+        for (FoldingKitElement in FoldingKitElements)
+            foldingLayout.addView(FoldingKitElement)
 
-        Collections.reverse(foldingCellElements)
+        Collections.reverse(FoldingKitElements)
 
         var nextDelay = 0
-        for (i in foldingCellElements.indices) {
-            val cell = foldingCellElements[i]
+        for (i in FoldingKitElements.indices) {
+            val cell = FoldingKitElements[i]
             cell.visibility = View.VISIBLE
             // not FIRST(BOTTOM) element - animate front view
             if (i != 0) {
@@ -443,14 +443,14 @@ open class FoldingKit : RelativeLayout {
                         .withStartOffset(nextDelay)
                         .withInterpolator(DecelerateInterpolator())
                 // if last(top) element - add end listener
-                if (i == foldingCellElements.size - 1) {
+                if (i == FoldingKitElements.size - 1) {
                     foldAnimation.setAnimationListener(animationEndListener)
                 }
                 cell.animateFrontView(foldAnimation)
                 nextDelay += part90degreeAnimationDuration
             }
             // if not last(top) element - animate whole view
-            if (i != foldingCellElements.size - 1) {
+            if (i != FoldingKitElements.size - 1) {
                 cell.startAnimation(FoldAnimation(FoldAnimation.FoldAnimationMode.FOLD_UP, mCameraHeight, part90degreeAnimationDuration.toLong())
                         .withStartOffset(nextDelay)
                         .withInterpolator(DecelerateInterpolator()))
@@ -462,16 +462,16 @@ open class FoldingKit : RelativeLayout {
     /**
      * Start unfold animation
      *
-     * @param foldingCellElements           ordered list with animation parts from top to bottom
+     * @param FoldingKitElements           ordered list with animation parts from top to bottom
      * @param foldingLayout                 prepared layout for animation parts
      * @param part90degreeAnimationDuration animation duration for 90 degree rotation
      * @param animationEndListener          animation end callback
      */
-    private fun startUnfoldAnimation(foldingCellElements: List<FoldingCellView>, foldingLayout: ViewGroup,
+    private fun startUnfoldAnimation(FoldingKitElements: List<FoldingKitView>, foldingLayout: ViewGroup,
                                      part90degreeAnimationDuration: Int, animationEndListener: AnimationEndListener) {
         var nextDelay = 0
-        for (i in foldingCellElements.indices) {
-            val cell = foldingCellElements[i]
+        for (i in FoldingKitElements.indices) {
+            val cell = FoldingKitElements[i]
             cell.visibility = View.VISIBLE
             foldingLayout.addView(cell)
             // if not first(top) element - animate whole view
@@ -481,7 +481,7 @@ open class FoldingKit : RelativeLayout {
                         .withInterpolator(DecelerateInterpolator())
 
                 // if last(bottom) element - add end listener
-                if (i == foldingCellElements.size - 1) {
+                if (i == FoldingKitElements.size - 1) {
                     foldAnimation.setAnimationListener(animationEndListener)
                 }
 
@@ -490,7 +490,7 @@ open class FoldingKit : RelativeLayout {
 
             }
             // not last(bottom) element - animate front view
-            if (i != foldingCellElements.size - 1) {
+            if (i != FoldingKitElements.size - 1) {
                 cell.animateFrontView(FoldAnimation(FoldAnimation.FoldAnimationMode.FOLD_DOWN, mCameraHeight, part90degreeAnimationDuration.toLong())
                         .withStartOffset(nextDelay)
                         .withInterpolator(DecelerateInterpolator()))
