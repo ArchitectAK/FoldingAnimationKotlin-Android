@@ -24,17 +24,13 @@ class HeightAnimation(mView: View, heightFrom: Int, heightTo: Int, duration: Int
         return this
     }
 
-    override fun initialize(width: Int, height: Int, parentWidth: Int, parentHeight: Int) {
-        super.initialize(width, height, parentWidth, parentHeight)
-    }
-
-    protected override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
+    override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
         val newHeight = mHeightFrom + (mHeightTo - mHeightFrom) * interpolatedTime
 
         if (interpolatedTime == 1f) {
-            mView.getLayoutParams().height = mHeightTo
+            mView.layoutParams.height = mHeightTo
         } else {
-            mView.getLayoutParams().height = newHeight.toInt()
+            mView.layoutParams.height = newHeight.toInt()
         }
         mView.requestLayout()
     }

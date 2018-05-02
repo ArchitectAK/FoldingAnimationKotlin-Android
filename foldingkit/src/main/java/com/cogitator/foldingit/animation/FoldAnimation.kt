@@ -79,9 +79,9 @@ class FoldAnimation(foldMode: FoldAnimationMode, cameraHeight: Int, duration: Lo
         }
     }
 
-    protected override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
+    override fun applyTransformation(interpolatedTime: Float, t: Transformation) {
         val camera = mCamera
-        val matrix = t.getMatrix()
+        val matrix = t.matrix
         val fromDegrees = mFromDegrees
         val degrees = fromDegrees + (mToDegrees - fromDegrees) * interpolatedTime
 

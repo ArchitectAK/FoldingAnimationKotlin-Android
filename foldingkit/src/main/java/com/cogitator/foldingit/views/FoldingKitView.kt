@@ -12,10 +12,9 @@ import android.widget.RelativeLayout
 
 class FoldingKitView : RelativeLayout {
 
-    var backView: View? = null
-        private set
-    var frontView: View? = null
-        private set
+    private var backView: View? = null
+
+    private var frontView: View? = null
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         val layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT)
