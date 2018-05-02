@@ -21,6 +21,9 @@ An Android library to allow developers to give folding animations to the views u
 
 ![](https://github.com/AnkitDroidGit/FoldingAnimationKotlin-Android/blob/master/art/animationgif.gif)
 
+##### credits for inspiration
+- [Ramotion's Folding Cell](https://github.com/Ramotion/folding-cell)
+
 
 
 ### Contact - Let's connect to learn together
