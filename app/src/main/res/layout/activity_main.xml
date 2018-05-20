@@ -37,41 +37,7 @@
 
         </LinearLayout>
 
-        <com.cogitator.foldingit.FoldingKit
-            android:id="@+id/folding_cell"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <FrameLayout
-                android:id="@+id/cell_content_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="390dp"
-                    android:background="@android:color/holo_green_dark"
-                    android:gravity="center"
-                    android:text="Content view" />
-
-            </FrameLayout>
-
-            <FrameLayout
-                android:id="@+id/cell_title_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:background="@android:color/holo_blue_dark"
-                    android:gravity="center"
-                    android:text="Title view" />
-
-            </FrameLayout>
-
-        </com.cogitator.foldingit.FoldingKit>
+        <include layout="@layout/recyclerview_item" />
 
         <Button
             android:id="@+id/see_list"
