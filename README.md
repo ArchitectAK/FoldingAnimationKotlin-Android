@@ -19,7 +19,8 @@ An Android library to allow developers to give folding animations to the views u
         implementation 'com.cogitator.foldingkit:foldingkit:1.0.0' 
 
 
-![](https://github.com/AnkitDroidGit/FoldingAnimationKotlin-Android/blob/master/art/animationgif.gif)
+
+ <img src="https://github.com/AnkitDroidGit/FoldingAnimationKotlin-Android/blob/master/art/animationgif.gif" width="400" height="720">
 
 ##### credits for inspiration
 - [Ramotion's Folding Cell](https://github.com/Ramotion/folding-cell)
