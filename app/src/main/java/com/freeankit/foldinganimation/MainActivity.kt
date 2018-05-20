@@ -1,5 +1,6 @@
 package com.freeankit.foldinganimation
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
@@ -15,12 +16,15 @@ class MainActivity : AppCompatActivity() {
 
         // attach click listener to fold btn
         toggle_btn.setOnClickListener({
-                folding_cell.toggle(false)
+            folding_cell.toggle(false)
         })
 
         // attach click listener to toast btn
         toggle_instant_btn.setOnClickListener({
             folding_cell.toggle(true)
+        })
+        see_list.setOnClickListener({
+            startActivity(Intent(this, ListActivity::class.java))
         })
 
     }

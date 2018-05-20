@@ -41,7 +41,7 @@
             android:id="@+id/cell_content_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:visibility="gone">
+            android:visibility="visible">
 
             <TextView
                 android:layout_width="match_parent"
@@ -67,6 +67,12 @@
         </FrameLayout>
 
     </com.cogitator.foldingit.FoldingKit>
+
+    <Button
+        android:id="@+id/see_list"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Toggle instantly" />
 
 
 </LinearLayout>
