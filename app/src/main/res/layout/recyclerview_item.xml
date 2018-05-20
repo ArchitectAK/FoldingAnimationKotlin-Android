@@ -12,8 +12,9 @@
             android:id="@+id/cell_content_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical"
-            android:visibility="visible">
+            android:visibility="gone">
 
             <TextView
                 android:layout_width="match_parent"
@@ -25,21 +26,21 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@android:color/holo_green_dark"
                 android:gravity="center"
                 android:text="Content view" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@android:color/holo_green_dark"
                 android:gravity="center"
                 android:text="Content view" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:background="@android:color/holo_blue_dark"
+                android:background="@android:color/holo_green_dark"
                 android:gravity="center"
                 android:text="Content view" />
 
@@ -49,6 +50,7 @@
             android:id="@+id/cell_title_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:orientation="vertical">
 
             <TextView
