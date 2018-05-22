@@ -26,6 +26,10 @@ An Android library to allow developers to give folding animations to the views u
 - [Ramotion's Folding Cell](https://github.com/Ramotion/folding-cell)
 
 
+### Would you like to buy me a cup of coffee?
+#### I'd appreciate even your little contribution to my work, it helps me keep this Open Source updated. If this project helped you or your business and if you feel like donating some bucks, you can Paypal me - ankitdroiddeveloper@gmail.com
+
+<a href='https://ko-fi.com/L3L1DM19' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ### Contact - Let's connect to learn together
 - [Twitter](https://twitter.com/KumarAnkitRKE)
