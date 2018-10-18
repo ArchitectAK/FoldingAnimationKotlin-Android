@@ -2,6 +2,7 @@
 
 An Android library to allow developers to give folding animations to the views using Kotlin.
 
+### I have written a [Medium Post here](https://t.co/uzavGOZ494) on it.
  
 # Add dependency to your project
 
