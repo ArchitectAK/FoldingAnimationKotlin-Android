@@ -30,6 +30,9 @@ class SampleAdapter : RecyclerView.Adapter<SampleAdapter.ViewHolder>() {
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(position: Int) = with(itemView) {
 
+            //            folding_cell.setBackgroundColor(resources.getColor(R.color.colorPrimary))
+            folding_cell.backSideColor = resources.getColor(R.color.colorPrimary)
+
             if (unfoldedIndexes.contains(position)) {
                 cell_title_view.visibility = View.GONE
                 cell_content_view.visibility = View.VISIBLE
@@ -38,12 +41,12 @@ class SampleAdapter : RecyclerView.Adapter<SampleAdapter.ViewHolder>() {
                 cell_title_view.visibility = View.VISIBLE
             }
 
-            itemView.setOnClickListener({
+            itemView.setOnClickListener {
                 // toggle clicked cell state
                 folding_cell.toggle(false)
                 // register in adapter that state for selected cell is toggled
                 registerToggle(position)
-            })
+            }
         }
 
         private fun registerToggle(position: Int) {

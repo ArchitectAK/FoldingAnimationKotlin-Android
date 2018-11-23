@@ -16,8 +16,8 @@ import android.widget.RelativeLayout
 import com.cogitator.foldingit.animation.AnimationEndListener
 import com.cogitator.foldingit.animation.FoldAnimation
 import com.cogitator.foldingit.animation.HeightAnimation
+import com.cogitator.foldingit.views.FoldingKitView
 import com.freeankit.foldingit.R
-import com.freeankit.foldingit.views.FoldingKitView
 import java.util.*
 
 /**
@@ -40,9 +40,9 @@ open class FoldingKit : RelativeLayout {
     private val DEF_CAMERA_HEIGHT = 30
 
     // current settings
-    private var mAnimationDuration = DEF_ANIMATION_DURATION
-    private var mBackSideColor = DEF_BACK_SIDE_COLOR
-    private var mAdditionalFlipsCount = DEF_ADDITIONAL_FLIPS
+    public var animationDuration = DEF_ANIMATION_DURATION
+    public var backSideColor = DEF_BACK_SIDE_COLOR
+    public var additionalFlipsCount = DEF_ADDITIONAL_FLIPS
     private var mCameraHeight = DEF_CAMERA_HEIGHT
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
@@ -70,9 +70,9 @@ open class FoldingKit : RelativeLayout {
      * @param additionalFlipsCount count of additional flips (after first one), set 0 for auto
      */
     fun initialize(animationDuration: Int, backSideColor: Int, additionalFlipsCount: Int) {
-        this.mAnimationDuration = animationDuration
-        this.mBackSideColor = backSideColor
-        this.mAdditionalFlipsCount = additionalFlipsCount
+        this.animationDuration = animationDuration
+        this.backSideColor = backSideColor
+        this.additionalFlipsCount = additionalFlipsCount
     }
 
     /**
@@ -83,9 +83,9 @@ open class FoldingKit : RelativeLayout {
      * @param additionalFlipsCount count of additional flips (after first one), set 0 for auto
      */
     fun initialize(cameraHeight: Int, animationDuration: Int, backSideColor: Int, additionalFlipsCount: Int) {
-        this.mAnimationDuration = animationDuration
-        this.mBackSideColor = backSideColor
-        this.mAdditionalFlipsCount = additionalFlipsCount
+        this.animationDuration = animationDuration
+        this.backSideColor = backSideColor
+        this.additionalFlipsCount = additionalFlipsCount
         this.mCameraHeight = cameraHeight
     }
 
@@ -119,12 +119,12 @@ open class FoldingKit : RelativeLayout {
             val foldingLayout = createAndPrepareFoldingContainer()
             this.addView(foldingLayout)
             // calculate heights of animation parts
-            val heights = calculateHeightsForAnimationParts(titleView.height, contentView.height, mAdditionalFlipsCount)
+            val heights = calculateHeightsForAnimationParts(titleView.height, contentView.height, additionalFlipsCount)
             // create list with animation parts for animation
             val foldingCellElements = prepareViewsForAnimation(heights, bitmapFromTitleView, bitmapFromContentView)
             // start unfold animation with end listener
             val childCount = foldingCellElements.size
-            val part90degreeAnimationDuration = mAnimationDuration / (childCount * 2)
+            val part90degreeAnimationDuration = animationDuration / (childCount * 2)
             startUnfoldAnimation(foldingCellElements, foldingLayout, part90degreeAnimationDuration, object : AnimationEndListener() {
                 override fun onAnimationEnd(animation: Animation?) {
                     contentView.visibility = View.VISIBLE
@@ -175,11 +175,11 @@ open class FoldingKit : RelativeLayout {
             this.addView(foldingLayout)
 
             // calculate heights of animation parts
-            val heights = calculateHeightsForAnimationParts(titleView.height, contentView.height, mAdditionalFlipsCount)
+            val heights = calculateHeightsForAnimationParts(titleView.height, contentView.height, additionalFlipsCount)
             // create list with animation parts for animation
             val foldingCellElements = prepareViewsForAnimation(heights, bitmapFromTitleView, bitmapFromContentView)
             val childCount = foldingCellElements.size
-            val part90degreeAnimationDuration = mAnimationDuration / (childCount * 2)
+            val part90degreeAnimationDuration = animationDuration / (childCount * 2)
             // start fold animation with end listener
             startFoldAnimation(foldingCellElements, foldingLayout, part90degreeAnimationDuration, object : AnimationEndListener() {
                 override fun onAnimationEnd(animation: Animation?) {
@@ -298,7 +298,7 @@ open class FoldingKit : RelativeLayout {
      */
     private fun createBackSideView(height: Int): ImageView {
         val imageView = ImageView(context)
-        imageView.setBackgroundColor(mBackSideColor)
+        imageView.setBackgroundColor(backSideColor)
         imageView.layoutParams = RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height)
         return imageView
     }
@@ -508,9 +508,9 @@ open class FoldingKit : RelativeLayout {
     private fun initializeFromAttributes(context: Context, attrs: AttributeSet) {
         val array = context.theme.obtainStyledAttributes(attrs, R.styleable.FoldingKit, 0, 0)
         try {
-            this.mAnimationDuration = array.getInt(R.styleable.FoldingKit_animationDuration, DEF_ANIMATION_DURATION)
-            this.mBackSideColor = array.getColor(R.styleable.FoldingKit_backSideColor, DEF_BACK_SIDE_COLOR)
-            this.mAdditionalFlipsCount = array.getInt(R.styleable.FoldingKit_additionalFlipsCount, DEF_ADDITIONAL_FLIPS)
+            this.animationDuration = array.getInt(R.styleable.FoldingKit_animationDuration, DEF_ANIMATION_DURATION)
+            this.backSideColor = array.getColor(R.styleable.FoldingKit_backSideColor, DEF_BACK_SIDE_COLOR)
+            this.additionalFlipsCount = array.getInt(R.styleable.FoldingKit_additionalFlipsCount, DEF_ADDITIONAL_FLIPS)
             this.mCameraHeight = array.getInt(R.styleable.FoldingKit_cameraHeight, DEF_CAMERA_HEIGHT)
         } finally {
             array.recycle()

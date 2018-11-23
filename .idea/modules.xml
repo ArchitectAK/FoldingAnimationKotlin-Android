@@ -3,7 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/FoldingAnimation.iml" filepath="$PROJECT_DIR$/FoldingAnimation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/FoldingAnimationKotlin-Android.iml" filepath="$PROJECT_DIR$/.idea/FoldingAnimationKotlin-Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/foldingkit/foldingkit.iml" filepath="$PROJECT_DIR$/foldingkit/foldingkit.iml" />
       <module fileurl="file://$PROJECT_DIR$/foldingkit/foldingkit.iml" filepath="$PROJECT_DIR$/foldingkit/foldingkit.iml" />
     </modules>
   </component>
