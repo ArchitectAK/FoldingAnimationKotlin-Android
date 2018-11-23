@@ -15,9 +15,9 @@ An Android library to allow developers to give folding animations to the views u
          <type>pom</type>
        </dependency>
        
-- in app level build.gradle
+- in app level build.gradle latest version
 
-        implementation 'com.cogitator.foldingkit:foldingkit:1.0.0' 
+        implementation 'com.cogitator.foldingkit:foldingkit:1.1.0' 
 
 
 
